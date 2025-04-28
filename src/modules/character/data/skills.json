@@ -1,0 +1,358 @@
+[
+  {
+    "id": "adaptability",
+    "name": "Adaptabilidad Humana",
+    "description": "Los humanos pueden elegir una habilidad adicional al crear el personaje.",
+    "requiredLevel": 1,
+    "raceRestriction": "human"
+  },
+  {
+    "id": "human_diplomacy",
+    "name": "Diplomacia Innata",
+    "description": "Bonificación a pruebas de persuasión y negociación.",
+    "requiredLevel": 1,
+    "raceRestriction": "human"
+  },
+  {
+    "id": "human_versatility",
+    "name": "Versatilidad",
+    "description": "Puede aprender habilidades de otras clases más fácilmente.",
+    "requiredLevel": 1,
+    "raceRestriction": "human"
+  },
+  {
+    "id": "human_resilience",
+    "name": "Resiliencia Humana",
+    "description": "Recupera puntos de vida adicionales al descansar.",
+    "requiredLevel": 1,
+    "raceRestriction": "human"
+  },
+
+  {
+    "id": "elven_grace",
+    "name": "Gracia Élfica",
+    "description": "Los elfos tienen ventaja en pruebas de sigilo y percepción en bosques.",
+    "requiredLevel": 1,
+    "raceRestriction": "elf"
+  },
+  {
+    "id": "elven_longevity",
+    "name": "Longevidad",
+    "description": "Los elfos son resistentes a enfermedades mágicas y naturales.",
+    "requiredLevel": 1,
+    "raceRestriction": "elf"
+  },
+  {
+    "id": "elven_magic_affinity",
+    "name": "Afinidad Mágica",
+    "description": "Bonificación a hechizos y resistencia mágica.",
+    "requiredLevel": 1,
+    "raceRestriction": "elf"
+  },
+  {
+    "id": "elven_archery",
+    "name": "Maestría con el Arco",
+    "description": "Competencia y bonificación al usar arcos.",
+    "requiredLevel": 1,
+    "raceRestriction": "elf"
+  },
+
+  {
+    "id": "dwarven_resilience",
+    "name": "Resistencia Enana",
+    "description": "Los enanos reciben resistencia al veneno y ventaja en tiradas de salvación de constitución.",
+    "requiredLevel": 1,
+    "raceRestriction": "dwarf"
+  },
+  {
+    "id": "dwarven_craftsmanship",
+    "name": "Maestría Artesanal",
+    "description": "Bonificación al fabricar armas y armaduras.",
+    "requiredLevel": 1,
+    "raceRestriction": "dwarf"
+  },
+  {
+    "id": "dwarven_stonecunning",
+    "name": "Astucia de la Piedra",
+    "description": "Detecta trampas y pasadizos ocultos en piedra.",
+    "requiredLevel": 1,
+    "raceRestriction": "dwarf"
+  },
+  {
+    "id": "dwarven_endurance",
+    "name": "Aguante Enano",
+    "description": "Puede cargar más peso y resistir fatiga.",
+    "requiredLevel": 1,
+    "raceRestriction": "dwarf"
+  },
+
+  {
+    "id": "orcish_rage",
+    "name": "Ira Orka",
+    "description": "Los orcos pueden entrar en furia, aumentando su fuerza temporalmente una vez por combate.",
+    "requiredLevel": 1,
+    "raceRestriction": "orc"
+  },
+  {
+    "id": "orcish_intimidation",
+    "name": "Intimidación",
+    "description": "Bonificación a pruebas de intimidar.",
+    "requiredLevel": 1,
+    "raceRestriction": "orc"
+  },
+  {
+    "id": "orcish_toughness",
+    "name": "Dureza Orka",
+    "description": "Recibe menos daño de ataques físicos.",
+    "requiredLevel": 1,
+    "raceRestriction": "orc"
+  },
+  {
+    "id": "orcish_hunter",
+    "name": "Cazador Salvaje",
+    "description": "Bonificación al rastrear y cazar criaturas.",
+    "requiredLevel": 1,
+    "raceRestriction": "orc"
+  },
+
+  {
+    "id": "halfling_luck",
+    "name": "Suerte de Mediano",
+    "description": "Los medianos pueden repetir una tirada de 1 en dados de ataque, habilidad o salvación.",
+    "requiredLevel": 1,
+    "raceRestriction": "halfling"
+  },
+  {
+    "id": "halfling_agility",
+    "name": "Agilidad Natural",
+    "description": "Bonificación a la evasión y movimientos ágiles.",
+    "requiredLevel": 1,
+    "raceRestriction": "halfling"
+  },
+  {
+    "id": "halfling_stealth",
+    "name": "Sigilo de Mediano",
+    "description": "Ventaja en pruebas de sigilo en entornos urbanos.",
+    "requiredLevel": 1,
+    "raceRestriction": "halfling"
+  },
+  {
+    "id": "halfling_bravery",
+    "name": "Valentía",
+    "description": "Inmune al miedo mágico.",
+    "requiredLevel": 1,
+    "raceRestriction": "halfling"
+  },
+
+  {
+    "id": "draconic_breath",
+    "name": "Aliento Dracónico",
+    "description": "Los dracónidos pueden usar un ataque de aliento elemental según su linaje una vez por descanso largo.",
+    "requiredLevel": 1,
+    "raceRestriction": "dragonborn"
+  },
+  {
+    "id": "draconic_scales",
+    "name": "Escamas Dracónicas",
+    "description": "Recibe resistencia a un tipo de daño elemental.",
+    "requiredLevel": 1,
+    "raceRestriction": "dragonborn"
+  },
+  {
+    "id": "draconic_presence",
+    "name": "Presencia Imponente",
+    "description": "Bonificación a intimidar y presencia social.",
+    "requiredLevel": 1,
+    "raceRestriction": "dragonborn"
+  },
+  {
+    "id": "draconic_ancestry",
+    "name": "Linaje Dracónico",
+    "description": "Acceso a un truco mágico relacionado con su linaje.",
+    "requiredLevel": 1,
+    "raceRestriction": "dragonborn"
+  },
+
+  {
+    "id": "infernal_legacy",
+    "name": "Legado Infernal",
+    "description": "Los tiflin conocen un truco mágico menor desde nivel 1 y obtienen más con el tiempo.",
+    "requiredLevel": 1,
+    "raceRestriction": "tiefling"
+  },
+  {
+    "id": "tiefling_fire_resistance",
+    "name": "Resistencia Ígnea",
+    "description": "Resistencia al daño de fuego.",
+    "requiredLevel": 1,
+    "raceRestriction": "tiefling"
+  },
+  {
+    "id": "tiefling_darkvision",
+    "name": "Visión en la Oscuridad",
+    "description": "Puede ver en la oscuridad mágica y normal.",
+    "requiredLevel": 1,
+    "raceRestriction": "tiefling"
+  },
+  {
+    "id": "tiefling_deceiver",
+    "name": "Engañador Nato",
+    "description": "Bonificación a pruebas de engaño y manipulación.",
+    "requiredLevel": 1,
+    "raceRestriction": "tiefling"
+  },
+
+  {
+    "id": "human_warrior_power_strike",
+    "name": "Golpe Poderoso",
+    "description": "Un ataque que inflige daño adicional. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "human_warrior"
+  },
+  {
+    "id": "human_warrior_battle_shout",
+    "name": "Grito de Batalla",
+    "description": "Inspira a los aliados cercanos, aumentando su ataque. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "human_warrior"
+  },
+  {
+    "id": "human_warrior_unbreakable",
+    "name": "Inquebrantable",
+    "description": "Reduce el daño recibido durante un turno. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "human_warrior"
+  },
+
+  {
+    "id": "elf_mage_arcane_blast",
+    "name": "Explosión Arcana",
+    "description": "Lanza una onda mágica que daña a varios enemigos. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "elf_mage"
+  },
+  {
+    "id": "elf_mage_mana_shield",
+    "name": "Escudo de Maná",
+    "description": "Absorbe daño usando maná. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "elf_mage"
+  },
+  {
+    "id": "elf_mage_timeless_wisdom",
+    "name": "Sabiduría Ancestral",
+    "description": "Reduce el coste de maná de los hechizos. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "elf_mage"
+  },
+
+  {
+    "id": "dwarf_berserker_rage",
+    "name": "Furia Berserker",
+    "description": "Aumenta mucho el daño pero reduce la defensa. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "dwarf_berserker"
+  },
+  {
+    "id": "dwarf_berserker_iron_skin",
+    "name": "Piel de Hierro",
+    "description": "Reduce el daño físico recibido. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "dwarf_berserker"
+  },
+  {
+    "id": "dwarf_berserker_last_stand",
+    "name": "Última Resistencia",
+    "description": "Permite resistir la muerte una vez por combate. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "dwarf_berserker"
+  },
+
+  {
+    "id": "orc_shaman_spirit_link",
+    "name": "Vínculo Espiritual",
+    "description": "Comparte daño con un aliado. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "orc_shaman"
+  },
+  {
+    "id": "orc_shaman_totemic_fury",
+    "name": "Furia Totémica",
+    "description": "Aumenta el poder de los tótems. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "orc_shaman"
+  },
+  {
+    "id": "orc_shaman_ancestral_healing",
+    "name": "Sanación Ancestral",
+    "description": "Cura a todos los aliados cercanos. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "orc_shaman"
+  },
+
+  {
+    "id": "halfling_rogue_sneak_attack",
+    "name": "Ataque Furtivo",
+    "description": "Inflige daño extra si el objetivo está distraído. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "halfling_rogue"
+  },
+  {
+    "id": "halfling_rogue_evasion",
+    "name": "Evasión",
+    "description": "Evita completamente el daño de un ataque. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "halfling_rogue"
+  },
+  {
+    "id": "halfling_rogue_master_of_disguise",
+    "name": "Maestro del Disfraz",
+    "description": "Puede adoptar identidades falsas fácilmente. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "halfling_rogue"
+  },
+
+  {
+    "id": "dragonborn_sorcerer_dragon_blood",
+    "name": "Sangre de Dragón",
+    "description": "Aumenta el daño de conjuros elementales. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "dragonborn_sorcerer"
+  },
+  {
+    "id": "dragonborn_sorcerer_wings",
+    "name": "Alas de Dragón",
+    "description": "Puede volar durante cortos periodos. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "dragonborn_sorcerer"
+  },
+  {
+    "id": "dragonborn_sorcerer_draconic_aura",
+    "name": "Aura Dracónica",
+    "description": "Otorga resistencia elemental a aliados cercanos. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "dragonborn_sorcerer"
+  },
+
+  {
+    "id": "tiefling_warlock_dark_pact",
+    "name": "Pacto Oscuro",
+    "description": "Accede a conjuros prohibidos. (Desbloquea en nivel 2)",
+    "requiredLevel": 2,
+    "classRestriction": "tiefling_warlock"
+  },
+  {
+    "id": "tiefling_warlock_shadow_step",
+    "name": "Paso Sombrío",
+    "description": "Se teletransporta entre sombras. (Desbloquea en nivel 5)",
+    "requiredLevel": 5,
+    "classRestriction": "tiefling_warlock"
+  },
+  {
+    "id": "tiefling_warlock_hellfire",
+    "name": "Fuego Infernal",
+    "description": "Lanza una llamarada infernal que ignora resistencias. (Desbloquea en nivel 10)",
+    "requiredLevel": 10,
+    "classRestriction": "tiefling_warlock"
+  }
+]
