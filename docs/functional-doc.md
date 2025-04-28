@@ -1,136 +1,144 @@
-# Documentación: **DM (Dungeon Master) Basado en IA**
+# 📄 **Documentación Funcional - Bot de Discord RPG**
 
-**Objetivo**: Un sistema de IA que actúe como _Dungeon Master autónomo_, generando historias, NPCs, mapas, y reaccionando a las acciones de los jugadores en tiempo real.
+## 1. Descripción general
+
+El proyecto consiste en un bot de Discord de aventura RPG (juego de rol) en formato de texto, donde los usuarios pueden:
+
+- Crear su personaje.
+- Explorar el mundo.
+- Combatir enemigos.
+- Subir de nivel.
+- Administrar su inventario de objetos.
+
+Todo a través de comandos sencillos y respuestas dinámicas en Discord.
 
 ---
 
-## **1. Arquitectura del DM-IA**
+## 2. Funcionalidades principales
 
-### **1.1 Componentes Clave**
+| Funcionalidad        | Descripción breve                                                       |
+| :------------------- | :---------------------------------------------------------------------- |
+| **Crear personaje**  | Permite al usuario iniciar su aventura.                                 |
+| **Explorar**         | Permite encontrar eventos: combates, cofres, o nada.                    |
+| **Ver estadísticas** | Muestra el estado actual del personaje.                                 |
+| **Ver inventario**   | Muestra los objetos recolectados.                                       |
+| **Combatir**         | Permite luchar directamente contra enemigos.                            |
+| **Subir de nivel**   | El personaje progresa ganando experiencia.                              |
+| **Obtener loot**     | Los jugadores reciben recompensas al ganar combates o encontrar cofres. |
 
-| Módulo                 | Tecnología/API         | Función                                                                        |
-| ---------------------- | ---------------------- | ------------------------------------------------------------------------------ |
-| **Núcleo Narrativo**   | OpenAI GPT-4           | Genera diálogos, tramas, descripciones de escenas, y misiones.                 |
-| **Generador de Mapas** | Stable Diffusion API   | Crea imágenes de mapas y ubicaciones basadas en descripciones textuales.       |
-| **NPCs Dinámicos**     | ElevenLabs (TTS)       | Da voz y personalidad única a los NPCs generados.                              |
-| **Motor de Decisión**  | Lógica de Árboles + RL | Toma decisiones basadas en el contexto (ej: ajustar dificultad de encuentros). |
+---
 
-### **1.2 Flujo de Interacción**
+## 3. Detalle de funcionalidades
 
-```mermaid
-sequenceDiagram
-  Jugador->>+Bot: /hacer-accion "Investigar la cueva"
-  Bot->>+IA-DM: Envía contexto (ubicación, inventario, nivel)
-  IA-DM->>+GPT-4: Genera descripción de la escena
-  GPT-4-->>-IA-DM: "La cueva emite un susurro... ¿Avanzáis?"
-  IA-DM->>+StableDiffusion: "Cueva oscura con runas brillantes"
-  StableDiffusion-->>-IA-DM: Imagen del mapa
-  IA-DM->>+Bot: {texto: "...", imagen: "url", npcs: [...]}
-  Bot->>-Jugador: Muestra narración + imagen
+### 3.1. `/start` - Crear personaje
+
+- **Objetivo:** Crear un nuevo personaje.
+- **Acción del usuario:** Ejecutar `/start`.
+- **Respuesta del bot:**
+  - Si ya tiene personaje → mensaje de error.
+  - Si no → se crea un personaje base y comienza el juego.
+
+---
+
+### 3.2. `/explore` - Explorar
+
+- **Objetivo:** Explorar el mundo en busca de eventos.
+- **Acción del usuario:** Ejecutar `/explore`.
+- **Eventos posibles:**
+  - Encontrar enemigo → opción de pelear o huir.
+  - Encontrar cofre → opción de abrir o ignorar.
+  - No encontrar nada → mensaje de exploración fallida.
+
+---
+
+### 3.3. `/stats` - Ver estadísticas
+
+- **Objetivo:** Consultar los atributos del personaje.
+- **Acción del usuario:** Ejecutar `/stats`.
+- **Respuesta del bot:** Muestra:
+  - Nivel
+  - Experiencia
+  - Vida actual y máxima
+  - Ataque
+  - Defensa
+  - Dinero
+
+---
+
+### 3.4. `/inventory` - Ver inventario
+
+- **Objetivo:** Revisar el inventario personal.
+- **Acción del usuario:** Ejecutar `/inventory`.
+- **Respuesta del bot:** Lista de objetos o mensaje de inventario vacío.
+
+---
+
+### 3.5. `/fight` - Combatir
+
+- **Objetivo:** Pelear directamente contra un enemigo.
+- **Acción del usuario:** Ejecutar `/fight`.
+- **Flujo del combate:**
+  - Se genera enemigo aleatorio.
+  - Usuario confirma si desea luchar.
+  - Turnos de ataque hasta que uno gane.
+  - Se gana experiencia y loot si vence, o se penaliza si pierde.
+
+---
+
+### 3.6. Sistema de niveles y experiencia
+
+- **Objetivo:** Permitir progresión del personaje.
+- **Acción:** Cada vez que el jugador gana experiencia suficiente:
+  - Sube de nivel.
+  - Mejora sus atributos automáticamente.
+
+---
+
+### 3.7. Sistema de loot
+
+- **Objetivo:** Recompensar al jugador.
+- **Acción:** Cada vez que derrota un enemigo o abre un cofre:
+  - Se genera aleatoriamente una recompensa (dinero, objetos, nada).
+  - Se añade automáticamente al inventario.
+
+---
+
+## 4. Flujo básico del usuario
+
+```plaintext
+Usuario usa /start → Se crea su personaje
+↓
+Usuario usa /explore → Encuentra enemigos o cofres
+↓
+Usuario combate usando /fight o desde /explore
+↓
+Gana experiencia y loot
+↓
+Sube de nivel automáticamente
+↓
+Administra sus ítems en /inventory
+↓
+Consulta su progreso en /stats
+↓
+Repite la aventura
 ```
 
 ---
 
-## **2. Funcionalidades Principales del DM-IA**
+## 5. Roles de usuarios
 
-### **2.1 Generación de Historias Adaptativas**
-
-- **Input**: Acciones de los jugadores, estado del mundo, progreso de la misión.
-- **Output**:
-  ```json
-  {
-    "escena": "La princesa NPC revela que el villano está en el Pantano de las Lágrimas.",
-    "recompensa": "Mapa del pantano",
-    "flag": "villano_revelado: true"
-  }
-  ```
-
-### **2.2 NPCs con Personalidad y Memoria**
-
-- Cada NPC generado tiene:
-  - **Base de datos de interacciones**: Recuerda tratos anteriores con jugadores.
-  - **Sistema de afinidad**: Ajusta diálogos según reputación (ej: "Eres mi enemigo... ¡Lárgate!").
-
-### **2.3 Generación de Encuentros Balanceados**
-
-- La IA calcula la dificultad de combate usando:
-  ```
-  dificultad = (nivel_jugadores × 1.5) + (número_enemigos × 0.8)
-  ```
-- Ejemplo de encuentro generado:
-  ```
-  Enemigos: 2 Orcos (Nivel 3), 1 Chaman Oscuro (Nivel 5).
-  Dificultad: Media.
-  ```
-
-### **2.4 Sistema de Consecuencias Dinámicas**
-
-- Las decisiones de los jugadores afectan el mundo:
-  - Ej: "Si roban en la tienda, el dueño contrata cazarecompensas".
-  - La IA actualiza las tablas de eventos y diálogos de NPCs.
+- **Usuarios comunes de Discord:**  
+  Pueden crear personajes y jugar.
+- **Administrador (opcional futuro):**  
+  (No se considera para MVP)  
+  Podría tener comandos especiales como resetear jugadores o añadir eventos especiales.
 
 ---
 
-## **3. Integración con el Bot de Discord**
+## 6. Reglas de negocio
 
-### **3.1 Comandos Específicos para el DM-IA**
-
-| Comando                 | Acción                                                                   |
-| ----------------------- | ------------------------------------------------------------------------ |
-| `/preguntar-dm [texto]` | La IA responde en-character como DM (ej: "¿Qué hay en el cofre?").       |
-| `/forzar-evento [tipo]` | La IA genera un evento aleatorio (ej: "tormenta", "ataque de bandidos"). |
-| `/npc-habla [nombre]`   | La IA genera un diálogo para el NPC especificado.                        |
-
-### **3.2 Almacenamiento de Contexto**
-
-- **Base de datos**: MongoDB guarda el estado del mundo en tiempo real:
-  ```json
-  {
-    "mundo": {
-      "ubicaciones_descubiertas": ["Cueva del Susurro", "Bosque Sylvano"],
-      "eventos_activos": ["eclipse_solar"],
-      "npc_relations": {
-        "Zoltar": { "reputacion": -10, "misiones_completadas": 2 }
-      }
-    }
-  }
-  ```
-
----
-
-## **4. Requisitos Técnicos**
-
-### **4.1 APIs Externas**
-
-- **OpenAI GPT-4**: Para narrativa y toma de decisiones (≈ $0.06 por 1k tokens).
-- **Stable Diffusion**: Generación de imágenes (≈ $0.002 por imagen).
-- **ElevenLabs**: Voces de NPCs (≈ $0.30 por 1k caracteres).
-
-### **4.2 Límites y Optimización**
-
-- **Cache de respuestas**: Almacenar descripciones recurrentes (ej: "una taberna estándar") para reducir costos.
-- **Prompt engineering**: Guiar a la IA con estructuras claras:
-  ```
-  Eres un DM de fantasía oscura. Los jugadores están en {ubicación}.
-  Sus acciones recientes son: {acciones}.
-  Genera una respuesta de 2 párrafos con un giro dramático.
-  ```
-
----
-
-## **5. Ejemplo de Sesión con DM-IA**
-
-**Jugador**: `/preguntar-dm "Inspecciono el altar antiguo"`  
-**DM-IA** (voz de ElevenLabs + imagen de Stable Diffusion):
-
-> _"El altar de piedra negra tiene grabados de un ojo sin párpado. De repente, una voz susurra en vuestras mentes: '¿Ofreceréis sangre a cambio de poder?'. En la pared, una figura oscura se materializa..."_
-
----
-
-## **6. Roadmap de Mejoras Futuras**
-
-1. **IA de voz en tiempo real**: Usar **Amazon Polly** para que el DM hable en el canal de voz de Discord.
-2. **Aprendizaje Refuerzo (RL)**: Entrenar un modelo para ajustar la dificultad según el desempeño de los jugadores.
-3. **Integración con ChatGPT Plugins**: Permitir que los NPCs accedan a datos externos (ej: clima del mundo en tiempo real).
-
----
+- Cada usuario puede tener **un único personaje**.
+- El sistema de combate debe ser **justo pero desafiante** (enemigos de dificultad acorde al nivel del jugador).
+- El loot es aleatorio, pero con mayor probabilidad de mejores objetos a medida que sube de nivel.
+- No se puede participar en más de un combate activo a la vez.
+- Si el jugador muere (pierde un combate), no pierde el personaje, pero recibe penalización (por ejemplo, pierde dinero o pierde acceso temporal a exploraciones).
